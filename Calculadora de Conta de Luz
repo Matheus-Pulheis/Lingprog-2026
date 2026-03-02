@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Calculadora {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Digite seu nome: ");
+		String name = sc.nextLine();
+		System.out.print("Digite a leitura anterior do medidor: ");
+		int leituraAntiga = sc.nextInt();
+		System.out.print("Digita a leitura atual do medidor: ");
+		int leituraAtual = sc.nextInt();
+		int kwh = leituraAtual - leituraAntiga;
+		float valorBruto = (float) (kwh * 0.60);
+		String bandeira = null;
+		if (kwh <= 100) {
+            bandeira = "Bandeira Verde";
+        } else if (kwh <= 200) {
+            bandeira = "Bandeira Amarela";
+            valorBruto += 2;
+        } else if (kwh <= 300) {
+            bandeira = "Bandeira Vermelha";
+            valorBruto += 5;
+        } else {
+            bandeira = "Bandeira Preta";
+            valorBruto += 10;
+        }
+		System.out.print("-=-=-=-=-  Conclusão  -=-=-=-=-\n");
+		System.out.printf("Nome: %s\n"
+						+ "Consumo total: %d\n"
+						+ "Cor da Bandeira: %s\n"
+						+ "Valor total: %.2f", name, kwh, bandeira, valorBruto);
+		}
+}
