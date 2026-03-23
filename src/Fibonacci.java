@@ -1,19 +1,24 @@
-
 import java.util.Scanner;
 
 public class Fibonacci {
-    public static void main(String[] args) {
-        Scanner leitor = new Scanner(System.in);
-        System.out.print("Quantos termos da sequência de Fibonacci você quer ver? ");
-        int termos = leitor.nextInt();
-        int n1 = 0, n2 = 1;
-        System.out.println("\nSequência de Fibonacci com " + termos + " termos:");
-        for (int i = 1; i <= termos; i++) {
-            System.out.print(n1 + " ");
-            int proximo = n1 + n2;
-            n1 = n2;               
-            n2 = proximo;         
-        }
-        System.out.println("\n\nFim da sequência.");
-    }
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	
+		System.out.print("Digite quantos numeros vc quer ver da sequencia de Fibonacci: ");
+		int j = sc.nextInt();
+		int[] Fibonacci = new int[j];
+		Fibonacci[0] = 0;
+		Fibonacci[1] = 1;
+		Fibonacci[2] = 1;
+		int soma = 0;
+		for(int i=3;i<Fibonacci.length;i++) {
+			soma = Fibonacci[i-2] + Fibonacci[i-1];
+			Fibonacci[i] = soma;
+		}
+		
+		System.out.print("\nSequencia de Fibonacci: \n");
+		for(int i=0;i<Fibonacci.length;i++) {
+			System.out.print(Fibonacci[i] + "\n");
+		}
+	}
 }
