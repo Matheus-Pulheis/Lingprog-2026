@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class OrdemCrescente {
+public class SubstituicaoDeValores {
     public static void main(String[] args) {
-        int[] num = lerNumeros(5);
-        ordenarVetor(num);
-        exibirVetor(num);
+        int[] numeros = lerNumeros(10);
+        processarSubstituicao(numeros);
+        exibirVetor(numeros);
     }
 
     public static int[] lerNumeros(int qtd) {
@@ -17,24 +17,16 @@ public class OrdemCrescente {
         return vet;
     }
 
-    public static void ordenarVetor(int[] vet) {
+    public static void processarSubstituicao(int[] vet) {
         for (int i = 0; i < vet.length; i++) {
-            for (int j = 0; j < vet.length; j++) {
-                if (vet[i] < vet[j]) {
-                    trocar(vet, i, j);
-                }
+            if (vet[i] < 0) {
+                vet[i] = 0;
             }
         }
     }
 
-    private static void trocar(int[] vet, int i, int j) {
-        int aux = vet[i];
-        vet[i] = vet[j];
-        vet[j] = aux;
-    }
-
     public static void exibirVetor(int[] vet) {
-        System.out.println("\n-=-=-=-=-=-=-= Vetor alinhado -=-=-=-==-=-=-=");
+        System.out.println("\nOs numeros negativos foram substituidos por [0]");
         for (int n : vet) {
             System.out.println(n);
         }

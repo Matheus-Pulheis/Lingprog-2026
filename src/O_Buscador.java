@@ -1,25 +1,36 @@
 import java.util.Scanner;
 
 public class O_Buscador {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		String[] nomes = new String[10];
-		
-		for(int i=0;i<nomes.length;i++) {
-			System.out.print("Digite um nome: ");
-			nomes[i] = sc.nextLine().toUpperCase();
-		}
-		
-		System.out.print("\n=-=-=-=-=-=-=-=-=-=-=-\n");
-		System.out.print("Qual nome deseja Buscar? ");
-		String nome = sc.nextLine().toUpperCase();
-		
-		for(int i=0;i<nomes.length;i++) {
-			if(nomes[i].equals(nome)) {
-				System.out.print("O nome foi encontrado!");
-				System.out.print("\nPosição: " + i);
-			}
-		}
-	}
+    public static void main(String[] args) {
+        String[] nomes = preencherNomes(10);
+        String alvo = pedirNomeBusca();
+        buscarExibir(nomes, alvo);
+    }
+
+    public static String[] preencherNomes(int qtd) {
+        Scanner sc = new Scanner(System.in);
+        String[] nomes = new String[qtd];
+        for (int i = 0; i < qtd; i++) {
+            System.out.print("Digite um nome: ");
+            nomes[i] = sc.nextLine().toUpperCase();
+        }
+        return nomes;
+    }
+
+    public static String pedirNomeBusca() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\n=-=-=-=-=-=-=-=-=-=-=-\nQual nome deseja Buscar? ");
+        return sc.nextLine().toUpperCase();
+    }
+
+    public static void buscarExibir(String[] lista, String alvo) {
+        boolean encontrado = false;
+        for (int i = 0; i < lista.length; i++) {
+            if (lista[i].equals(alvo)) {
+                System.out.printf("O nome foi encontrado!%nPosição: %d%n", i);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) System.out.println("Nome não encontrado.");
+    }
 }

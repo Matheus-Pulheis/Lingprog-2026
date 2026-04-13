@@ -1,24 +1,35 @@
 import java.util.Scanner;
 
 public class Fibonacci {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-	
-		System.out.print("Digite quantos numeros vc quer ver da sequencia de Fibonacci: ");
-		int j = sc.nextInt();
-		int[] Fibonacci = new int[j];
-		Fibonacci[0] = 0;
-		Fibonacci[1] = 1;
-		Fibonacci[2] = 1;
-		int soma = 0;
-		for(int i=3;i<Fibonacci.length;i++) {
-			soma = Fibonacci[i-2] + Fibonacci[i-1];
-			Fibonacci[i] = soma;
-		}
-		
-		System.out.print("\nSequencia de Fibonacci: \n");
-		for(int i=0;i<Fibonacci.length;i++) {
-			System.out.print(Fibonacci[i] + "\n");
-		}
-	}
+    public static void main(String[] args) {
+        int quantidade = pedirQuantidade();
+        int[] sequencia = gerarFibonacci(quantidade);
+        exibirSequencia(sequencia);
+    }
+
+    public static int pedirQuantidade() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite quantos numeros vc quer ver da sequencia: ");
+        return sc.nextInt();
+    }
+
+    public static int[] gerarFibonacci(int n) {
+        if (n <= 0) return new int[0];
+        int[] fib = new int[n];
+        
+        if (n > 0) fib[0] = 0;
+        if (n > 1) fib[1] = 1;
+        
+        for (int i = 2; i < n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib;
+    }
+
+    public static void exibirSequencia(int[] array) {
+        System.out.println("\nSequencia de Fibonacci:");
+        for (int num : array) {
+            System.out.println(num);
+        }
+    }
 }
